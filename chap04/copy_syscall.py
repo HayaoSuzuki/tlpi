@@ -39,12 +39,17 @@ def copy_file(src, dst):
         if len(read_bytes) != written_bytes_len:
             print("could not write whole buffer.")
             return os.EX_IOERR
-    if os.close(src_fd) == -1:
+    try:
+        os.close(src_fd)
+    except OSError:
         print("cloud not close input file.")
         return os.EX_IOERR
-    if os.close(dst_fd) == -1:
+    try:
+        os.close(dst_fd)
+    except OSError:
         print("cloud not close output file.")
         return os.EX_IOERR
+
     return os.EX_OK
 
 
