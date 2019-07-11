@@ -1,6 +1,7 @@
 import argparse
 import os
 import sys
+import stat
 
 
 BUF_SIZE = 1024
@@ -20,6 +21,20 @@ def copy_file(src, dst):
             if len(read_bytes) != written_bytes_len:
                 print("could not write whole buffer.")
                 return os.EX_IOERR
+    try:
+        dst_mode = (
+            stat.S_IRUSR
+            | stat.S_IWUSR
+            | stat.S_IRGRP
+            | stat.S_IWGRP
+            | stat.S_IROTH
+            | stat.S_IWOTH
+        )
+        os.chmod(dst, dst_mode)
+    except OSError:
+        print("could not change mode.")
+        return os.EX_IOERR
+
     return os.EX_OK
 
 
