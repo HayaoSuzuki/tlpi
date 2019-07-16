@@ -1,0 +1,8 @@
+[package]
+name = "tee"
+version = "0.1.0"
+authors = ["Hayao Suzuki <hayao.math@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+getopts = "0.2"
