@@ -51,6 +51,13 @@ def main():
     print(f"old open file description: {fcntl.fcntl(out_f, fcntl.F_GETFL)}")
     print(f"new open file description: {fcntl.fcntl(new_fd, fcntl.F_GETFL)}")
 
+    print(f"old current seek position: {os.lseek(out_f.fileno(), 0, os.SEEK_CUR)}")
+    print(f"new current seek position: {os.lseek(new_fd, 0, os.SEEK_CUR)}")
+
+    print(f"new current seek move: {os.lseek(new_fd, 10, os.SEEK_CUR)}")
+    print(f"old current seek position: {os.lseek(out_f.fileno(), 0, os.SEEK_CUR)}")
+    print(f"new current seek position: {os.lseek(new_fd, 0, os.SEEK_CUR)}")
+
     out_f.close()
     os.close(new_fd)
 
