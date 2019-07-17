@@ -5,7 +5,7 @@ import stat
 
 
 def tee(file, is_append):
-    open_flags = os.O_RDWR | os.O_CREAT
+    open_flags = os.O_WRONLY | os.O_CREAT
     if is_append:
         open_flags |= os.O_APPEND
     else:

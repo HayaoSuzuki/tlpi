@@ -10,8 +10,6 @@ use std::io::Read;
 use std::io::Write;
 
 fn tee(out: &str, is_append: bool) -> std::io::Result<()> {
-    println!("{}", out);
-    println!("{}", is_append);
     let mut output_file;
     if is_append {
         output_file = OpenOptions::new().append(true).open(out)?;
