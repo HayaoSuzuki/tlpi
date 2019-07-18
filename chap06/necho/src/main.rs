@@ -1,7 +1,7 @@
-use std::env::args;
+use std::env;
 
 fn main() {
-    for (idx, arg) in args().into_iter().enumerate() {
+    for (idx, arg) in env::args().enumerate() {
         println!("argv[{}] = {}", idx, arg);
     }
 }
